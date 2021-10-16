@@ -1,7 +1,7 @@
-Eszközkészlet
+EszkÃ¶zkÃ©szlet
 
 * introjdk - Java platform
 * intromaven - Maven
 * introide - IDE
-* introgit - Git használata az IDE-ben
-* introgithub - Feltöltés GitHubra
+* introgit - Git hasznÃ¡lata az IDE-ben
+* introgithub - FeltÃ¶ltÃ©s GitHubra (kÃ¼lÃ¶n repo-ban: https://github.com/codriv/introgit.git)
