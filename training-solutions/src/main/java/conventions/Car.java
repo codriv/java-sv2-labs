@@ -34,7 +34,8 @@ public class Car {
     }
 
     public void setEngineType(String engineType) {
-        this.engineType = engineType;}
+        this.engineType = engineType;
+    }
 
     public void setDoors(int doors) {
         this.doors = doors;}public void setPersonS(int persons) {
