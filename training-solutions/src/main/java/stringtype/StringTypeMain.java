@@ -1,5 +1,7 @@
 package stringtype;
 
+import java.util.Locale;
+
 public class StringTypeMain {
     public static void main(String[] args) {
         String prefix = "Hello ";
