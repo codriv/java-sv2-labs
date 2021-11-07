@@ -1,4 +1,4 @@
-package enumtypes.firstenum.position;
+package enumtypes.position;
 
 public enum Position {
     PORTER(300_000, "étkezési jegy"), ANALYST(400_000, "üdülési csekk"),

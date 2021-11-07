@@ -1,4 +1,4 @@
-package enumtypes.firstenum.university;
+package enumtypes.university;
 
 public class UniversityMain {
     public static void main(String[] args) {

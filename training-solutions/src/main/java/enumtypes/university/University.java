@@ -1,4 +1,4 @@
-package enumtypes.firstenum.university;
+package enumtypes.university;
 
 public enum University {
     BME("Budapesti Műszaki és Gazdaságtudományi Egyetem"), SZE("Széchenyi István Egyetem"),
