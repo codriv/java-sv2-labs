@@ -18,8 +18,14 @@ public class WordsTest {
         assertEquals("Anna", word);
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
+
     public void getFirstWordWithATestWithException() {
+        assertEquals("Anna", words.getFirstWordWithA(Paths.get("wrongPath/words.txt")));
+    }
+
+    @Test
+    public void getFirstWordWithATestWithAssertThrows() {
         IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> words.getFirstWordWithA(wrongPath));
         assertEquals("Can not read file", exception.getMessage());
