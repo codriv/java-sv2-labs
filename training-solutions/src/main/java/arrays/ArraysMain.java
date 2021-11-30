@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ArraysMain {
     public static void main(String[] args) {
-        ArraysMain arraysMain = new ArraysMain;
+        ArraysMain arraysMain = new ArraysMain();
         System.out.println("\nA hónapok napjainak száma:");
         System.out.println(arraysMain.numberOfDaysAsString());
         System.out.println();
