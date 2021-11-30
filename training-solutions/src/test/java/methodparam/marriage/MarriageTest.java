@@ -3,6 +3,7 @@ package methodparam.marriage;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,5 +22,20 @@ class MarriageTest {
         assertEquals(today, woman.getRegisterDates().get(1).getDate());
         assertEquals(description, man.getRegisterDates().get(1).getDescription());
         assertEquals("Nagyné Kis Mari", woman.getName());
+//        System.out.println(Arrays.deepToString(man.getRegisterDates().toArray()));
+//        System.out.println(woman.getRegisterDates());
+    }
+
+    @Test
+    void testGetMarriedWtihFind() {
+        Marriage marriage = new Marriage();
+        marriage.getMarried(woman, man);
+        LocalDate dateOfMarriage = null;
+        for (RegisterDate register: woman.getRegisterDates()) {
+            if (description.equals(register.getDescription())) {
+                dateOfMarriage = register.getDate();
+            }
+        }
+        assertEquals(today, dateOfMarriage);
     }
 }

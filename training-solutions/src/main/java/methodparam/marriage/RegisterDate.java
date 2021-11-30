@@ -18,4 +18,9 @@ public class RegisterDate {
     public LocalDate getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %s", description, date.toString());
+    }
 }

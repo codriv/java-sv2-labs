@@ -14,7 +14,7 @@ public class Woman {
     }
 
     private void addDateOfBirth(LocalDate dateOfBirth) {
-        registerDates.add(new RegisterDate("születés ideje", dateOfBirth));
+        registerDates.add(new RegisterDate("Születés ideje", dateOfBirth));
     }
 
     public String getName() {
