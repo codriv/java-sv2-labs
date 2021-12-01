@@ -28,8 +28,9 @@ class SeparatedSumTest {
 
     @Test
     void testSeparatedSum() {
-        double sumPositiveActual = new SeparatedSum().sum(floatingNumbers).getSumPositive();
-        double sumNegativeActual = new SeparatedSum().sum(floatingNumbers).getSumNegative();
+        SeparatedSum separatedSum = new SeparatedSum().sum(floatingNumbers);
+        double sumPositiveActual = separatedSum.getSumPositive();
+        double sumNegativeActual = separatedSum.getSumNegative();
         assertEquals(sumPositiveExpected, sumPositiveActual);
         assertTrue(Math.abs(sumNegativeActual - sumNegativeExpected) < accuracy);
     }
