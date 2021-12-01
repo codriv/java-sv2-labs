@@ -3,10 +3,10 @@ package immutable;
 import java.time.LocalDate;
 
 public class Monument {
-    private String name;
-    private String address;
-    private LocalDate dateOfRegistry;
-    private String registryNumber;
+    private final String name;
+    private final String address;
+    private final LocalDate dateOfRegistry;
+    private final String registryNumber;
 
     public Monument(String name, String address, LocalDate dateOfRegistry, String registryNumber) {
         if (name == null || isEmpty(name) || address == null || isEmpty(address) ||

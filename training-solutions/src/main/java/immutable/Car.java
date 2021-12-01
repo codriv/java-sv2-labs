@@ -3,9 +3,9 @@ package immutable;
 import java.time.LocalDate;
 
 public class Car {
-    private String brand;
-    private String model;
-    private int yearOfProduction;
+    private final String brand;
+    private final String model;
+    private final int yearOfProduction;
 
     public Car(String brand, String model, int year) {
         if (brand == null || brand.isBlank()) {
