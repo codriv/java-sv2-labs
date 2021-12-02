@@ -10,13 +10,38 @@ class SimpleDateFormatterTest {
     SimpleDate simpleDate = new SimpleDate();
 
     @Test
-    void formatDateString() {
+    void testFormatDateString() {
         simpleDate.setDate(1952, 3, 5);
         System.out.println(simpleDateFormatter.formatDateString(simpleDate));
     }
 
     @Test
-    void formatDateStringByCountryCode() {
+    void testFormatDateStringByCountryCode() {
+        simpleDate.setDate(1952, 3, 5);
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.US, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.HU, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.EN, simpleDate));
+    }
+
+    @Test
+    void testFormatDateStringByCountryCode2() {
+        simpleDate.setDate(1952, 3, 5);
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.US, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.HU, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.EN, simpleDate));
+
+    }
+
+    @Test
+    void testFormatDateStringByCountryCode3() {
+        simpleDate.setDate(1952, 3, 5);
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.US, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.HU, simpleDate));
+        System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.EN, simpleDate));
+    }
+
+    @Test
+    void testFormatDateStringByCountryCode4() {
         simpleDate.setDate(1952, 3, 5);
         System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.US, simpleDate));
         System.out.println(simpleDateFormatter.formatDateStringByCountryCode(CountryCode.HU, simpleDate));
