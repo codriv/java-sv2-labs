@@ -19,14 +19,21 @@ public class SimpleDateFormatter {
         return String.format("%d-%d-%d", date[country[0]], date[country[1]], date[country[2]]);
     }
 
-    public String formatDateStringByCountryCode2(CountryCode2 countryCode, SimpleDate simpleDate) {
+    public String formatDateStringByCountryCode2(CountryCode2 countryCode2, SimpleDate simpleDate) {
         int[] date = {simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay()};
-        int[] country = countryCode.getOrder();
+        int[] country = countryCode2.getOrder();
+        return String.format("%d-%d-%d", date[country[0]], date[country[1]], date[country[2]]);
+    }
+
+    public String formatDateStringByCountryCode3(CountryCode3 countryCode3, SimpleDate simpleDate) {
+        int[] date = {simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay()};
+        int[] country = countryCode3.getOrder();
         return String.format("%d-%d-%d", date[country[0]], date[country[1]], date[country[2]]);
     }
 
 
-    public String formatDateStringByCountryCode3(CountryCode countryCode, SimpleDate simpleDate) {
+
+    public String formatDateStringByCountryCode4(CountryCode countryCode, SimpleDate simpleDate) {
         int[] date = {simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay()};
         String[] formats = {"HU012", "EN210", "US120"};
         int[] country = new int[3];
@@ -45,7 +52,7 @@ public class SimpleDateFormatter {
     }
 
 
-    public String formatDateStringByCountryCode4(CountryCode countryCode, SimpleDate simpleDate) {
+    public String formatDateStringByCountryCode5(CountryCode countryCode, SimpleDate simpleDate) {
         int[] date = {simpleDate.getYear(), simpleDate.getMonth(), simpleDate.getDay()};
         String[] formats = {"HU012", "EN210", "US120"};
         int[] country = null;
@@ -60,7 +67,7 @@ public class SimpleDateFormatter {
     private int[] getOrder(String orderString) {
         int[] order = new int[3];
         for (int i = 0; i < 3; i++) {
-            order[0] = Character.getNumericValue(orderString.charAt(i));
+            order[i] = Character.getNumericValue(orderString.charAt(i));
         }
         return order;
     }

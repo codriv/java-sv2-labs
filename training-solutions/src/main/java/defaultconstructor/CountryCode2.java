@@ -10,6 +10,9 @@ public enum CountryCode2 {
     }
 
     public int[] getOrder() {
+        for (int i = 0; i < order.length; i++) {
+            order[i] = order[i] - 1;
+        }
         return order;
     }
 }
