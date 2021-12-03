@@ -13,12 +13,24 @@ public class BusTimeTable {
 
     public BusTimeTable(int firstHour, int lastHour, int everyMinute) {
         timeTable = new ArrayList<>();
-        for (int i = firstHour; i <= lastHour; i++) {
-            for (int j = 0; j < 60; j += everyMinute) {
-                timeTable.add(new SimpleTime(i, j));
+        int hour = firstHour;
+        for (int i = 0; (hour * 60 + i <= (lastHour + 1) * 60); i += everyMinute) {
+            if (i > 59) {
+                hour++;
+                i -= 60;
             }
+            timeTable.add(new SimpleTime(hour, i));
         }
     }
+
+//    public BusTimeTable(int firstHour, int lastHour, int everyMinute) {
+//        timeTable = new ArrayList<>();
+//        for (int i = firstHour; i <= lastHour; i++) {
+//            for (int j = 0; j < 60; j += everyMinute) {
+//                timeTable.add(new SimpleTime(i, j));
+//            }
+//        }
+//    }
 
     public List<SimpleTime> getTimeTable() {
         return timeTable;
