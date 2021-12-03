@@ -11,6 +11,10 @@ public class BusTimeTable {
         this.timeTable = timeTable;
     }
 
+    public List<SimpleTime> getTimeTable() {
+        return timeTable;
+    }
+
     public BusTimeTable(int firstHour, int lastHour, int everyMinute) {
         timeTable = new ArrayList<>();
         int hour = firstHour;
@@ -32,9 +36,6 @@ public class BusTimeTable {
 //        }
 //    }
 
-    public List<SimpleTime> getTimeTable() {
-        return timeTable;
-    }
 
     public SimpleTime getNextBus(SimpleTime actual) {
         for (SimpleTime simpleTime: timeTable) {
