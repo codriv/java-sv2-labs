@@ -22,33 +22,33 @@ Ezen a héten nagyrészt ismétlés következik, néhány újabb ismerettel: a p
   
 ## Attribútumok és metódusok
 
-* [ ] [Immutable objektumok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525738-immutable-objektumok)
-* [ ] Immutable objektumok gyakorlati feladat
-* [ ] [JavaBeans objektumok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525757-javabeans-objektumok)
-* [ ] JavaBeans objektumok gyakorlati feladat
-* [ ] [Metódusok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525772-metodusok)
-* [ ] Metódusok gyakorlati feladat
-* [ ] [Értékmásolás szerinti paraméterátadás videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525776-ertekmasolas-szerinti-parameteratadas)
-* [ ] Értékmásolás szerinti paraméterátadás gyakorlati feladat
-* [ ] [Metódus paraméterek és visszatérési értékek videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525904-metodus-parameterek-es-visszateresi-ertekek)
-* [ ] Metódus paraméterek és visszatérési értékek gyakorlati feladat
-* [ ] [Változó hosszúságú paraméterlista videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525916-valtozo-hosszusagu-parameterlista)
-* [ ] Változó hosszúságú paraméterlista gyakorlati feladat
-* [ ] [Metódus hívások láncolása videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525922-metodus-hivasok-lancolasa)
-* [ ] Metódus hívások láncolása gyakorlati feladat
-* [ ] [Metódusnév túlterhelés videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525928-metodusnev-tulterheles)
-* [ ] Metódusnév túlterhelés gyakorlati feladat
-* [ ] [Statikus attribútumok és metódusok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525936-statikus-attributumok-es-metodusok)
-* [ ] Statikus attribútumok és metódusok gyakorlati feladat
+* [x] [Immutable objektumok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525738-immutable-objektumok)
+* [x] Immutable objektumok gyakorlati feladat
+* [x] [JavaBeans objektumok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525757-javabeans-objektumok)
+* [x] JavaBeans objektumok gyakorlati feladat
+* [x] [Metódusok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525772-metodusok)
+* [x] Metódusok gyakorlati feladat
+* [x] [Értékmásolás szerinti paraméterátadás videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525776-ertekmasolas-szerinti-parameteratadas)
+* [x] Értékmásolás szerinti paraméterátadás gyakorlati feladat
+* [x] [Metódus paraméterek és visszatérési értékek videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525904-metodus-parameterek-es-visszateresi-ertekek)
+* [x] Metódus paraméterek és visszatérési értékek gyakorlati feladat
+* [x] [Változó hosszúságú paraméterlista videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525916-valtozo-hosszusagu-parameterlista)
+* [x] Változó hosszúságú paraméterlista gyakorlati feladat
+* [x] [Metódus hívások láncolása videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525922-metodus-hivasok-lancolasa)
+* [x] Metódus hívások láncolása gyakorlati feladat
+* [x] [Metódusnév túlterhelés videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525928-metodusnev-tulterheles)
+* [x] Metódusnév túlterhelés gyakorlati feladat
+* [x] [Statikus attribútumok és metódusok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525936-statikus-attributumok-es-metodusok)
+* [x] Statikus attribútumok és metódusok gyakorlati feladat
   
 ## Konstruktorok és inicializátorok
 
-* [ ] [Default és paraméter nélküli konstruktor videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525983-default-es-parameter-nelkuli-konstruktor)
-* [ ] Default és paraméter nélküli konstruktor gyakorlati feladat
-* [ ] [Konstruktor túlterhelés videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525990-konstruktor-tulterheles)
-* [ ] Konstruktor túlterhelés gyakorlati feladat
-* [ ] [Inicializátorok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525995-inicializatorok)
-* [ ] Inicializátorok gyakorlati feladat
+* [x] [Default és paraméter nélküli konstruktor videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525983-default-es-parameter-nelkuli-konstruktor)
+* [x] Default és paraméter nélküli konstruktor gyakorlati feladat
+* [x] [Konstruktor túlterhelés videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525990-konstruktor-tulterheles)
+* [x] Konstruktor túlterhelés gyakorlati feladat
+* [x] [Inicializátorok videó](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/29525995-inicializatorok)
+* [x] Inicializátorok gyakorlati feladat
 
 ## Konzultációk
 
