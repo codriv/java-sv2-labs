@@ -1,4 +1,4 @@
-package records;
+package schoolrecords;
 
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ public class TutorTest {
         //Given
         Tutor tutor = new Tutor("Nagy Csilla", Arrays.asList(new Subject("matematika"), new Subject("fizika")));
         //Then
-
         assertEquals("Nagy Csilla", tutor.getName());
         assertTrue(tutor.tutorTeachingSubject(new Subject("fizika")));
     }
