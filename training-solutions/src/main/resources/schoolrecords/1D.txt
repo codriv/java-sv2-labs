@@ -1,0 +1,10 @@
+classname;1D
+subjects;földrajz,biológia,fizika,kémia,matematika,magyar
+tutor;Nagy Csilla;földrajz,biológia
+tutor;Kis Andor;fizika,kémia
+tutor;Galamb Sándor;matematika,magyar,földrajz
+student;Nagy Sándor;földrajz:A(Nagy Csilla),B(Galamb Sándor),C(Nagy Csilla)/matematika:D(Galamb Sándor)/fizika:C(Kis Andor),B(Kis Andor)
+student;Piros Alma;kémia:D(Kis Andor),B(Kis Andor)/magyar:B(Galamb Sándor),A(Galamb Sándor)/matematika:A(Galamb Sándor)
+student;Zöld Piroska;biológia:B(Nagy Csilla),A(Nagy Csilla)
+student;Futaki Bátor;földrajz:A(Nagy Csilla),C(Nagy Csilla)/fizika:D(Kis Andor),A(Kis Andor)/kémia:A(Kis Andor),F(Kis Andor),B(Kis Andor)/magyar:C(Galamb Sándor)
+student;Fehér Rózsa;biológia:C(Nagy Csilla),A(Nagy Csilla),B(Nagy Csilla)/földrajz:A(Galamb Sándor)
