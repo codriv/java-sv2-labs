@@ -1,44 +1,29 @@
 package schoolrecords;
 
+import java.nio.file.Path;
 import java.util.*;
 
 public class SchoolRecordsController {
-
-    private ClassRecords classRecords = new ClassRecords("1A", new Random());
+    private ClassRecords classRecords;
     private List<Subject> subjects;
     private List<Tutor> tutors;
     Scanner scanner = new Scanner(System.in);
 
-    public void initSchool() {
-        subjects = new ArrayList<>(Arrays.asList(
-                new Subject("földrajz"),
-                new Subject("matematika"),
-                new Subject("biológia"),
-                new Subject("zene"),
-                new Subject("fizika"),
-                new Subject("kémia")));
-
-        tutors = new ArrayList<>(Arrays.asList(
-                new Tutor("Nagy Csilla", teaches("földrajz", "biológia")),
-                new Tutor("Kis Béla", teaches("fizika", "kémia")),
-                new Tutor("Fekete Péter", teaches("matematika", "ének"))));
-
-        classRecords.addStudent(new Student("Kovács Rita"));
-        classRecords.addStudent(new Student("Nagy Béla"));
-        classRecords.addStudent(new Student("Varga Márton"));
-        classRecords.addStudent(new Student("Nagy Sándor"));
-        classRecords.addStudent(new Student("Kis Aranka"));
-        classRecords.addStudent(new Student("Piros Alma"));
+    public void selectClass() {
+        System.out.println("Osztály: ");
+        String className = scanner.nextLine();
+        Path path = Path.of("src/main/resources/schoolrecords/" + className + ".txt");
+        initSchool(path);
     }
 
-    private List<Subject> teaches(String... subjects) {
-        List<Subject> listOfSubjects = new ArrayList<>();
-        for (Subject subject: this.subjects) {
-            if (Arrays.asList(subjects).contains(subject.getName())) {
-                listOfSubjects.add(subject);
-            }
+    public void initSchool(Path path) {
+        ImportClassRecord importClassRecord = new ImportClassRecord(path);
+        classRecords = new ClassRecords(importClassRecord.getClassName(), new Random());
+        subjects = importClassRecord.getSubjects();
+        tutors = importClassRecord.getTutors();
+        for (Student student: importClassRecord.getStudents()) {
+            classRecords.addStudent(student);
         }
-        return listOfSubjects;
     }
 
     public void printMenu() {
@@ -52,7 +37,9 @@ public class SchoolRecordsController {
                 "8. Diákok átlagának megjelenítése\n" +
                 "9. Diák átlagának kiírása\n" +
                 "10. Diák tantárgyhoz tartozó átlagának kiírása\n" +
-                "11. Kilépés");
+                "11. Napló mentése [" + classRecords.getClassName() + "]\n" +
+                "12. Osztály választása\n" +
+                "13. Kilépés");
         select();
     }
 
@@ -92,7 +79,13 @@ public class SchoolRecordsController {
             case "10": System.out.println(calculateSubjectAverage());
                 printMenu();
                 break;
-            case "11": exit();
+            case "11": save();
+                printMenu();
+                break;
+            case "12": selectClass();
+                printMenu();
+                break;
+            case "13": exit();
         }
     }
 
@@ -118,8 +111,12 @@ public class SchoolRecordsController {
 
     public void repetition() {
         Student student = classRecords.repetition();
+        System.out.println("Felelő diák: " + student.getName());
+        System.out.print("Érdemjegy: ");
         String markString = scanner.nextLine();
+        System.out.print("Tantárgy: ");
         String subjectString = scanner.nextLine();
+        System.out.print("Tanár: ");
         String tutorString = scanner.nextLine();
         Mark mark = new Mark(MarkType.valueOf(markString),
                 findSubjectByName(subjectString), findTutorByName(tutorString));
@@ -180,13 +177,23 @@ public class SchoolRecordsController {
         return classRecords.findStudentByName(name).calculateSubjectAverage(subject);
     }
 
+    private void save() {
+        Path path = Path.of("src/main/resources/schoolrecords/" + classRecords.getClassName() + ".txt");
+        ExportClassRecord exportClassRecord = new ExportClassRecord(path);
+        exportClassRecord.addClassName(classRecords);
+        exportClassRecord.addSubjects(subjects);
+        exportClassRecord.addTutors(tutors);
+        exportClassRecord.addStudents(classRecords);
+        exportClassRecord.writeFile();
+    }
+
     public void exit() {
         return;
     }
 
     public static void main(String[] args) {
         SchoolRecordsController schoolRecordsController = new SchoolRecordsController();
-        schoolRecordsController.initSchool();
+        schoolRecordsController.selectClass();
         schoolRecordsController.printMenu();
     }
 }

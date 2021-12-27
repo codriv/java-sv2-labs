@@ -41,19 +41,6 @@ public class ClassRecords {
         return getAverageRound(sumOfAverages, listStudyResults().size());
     }
 
-    public double calculateClassAverageExceptEmptyMarks() {
-        checkStudentsAndMarks();
-        double sumOfAverages = 0.0;
-        int numberOfStudents = 0;
-        for (StudyResultByName student : listStudyResults()) {
-            if (student.getStudyAverage() > 0.0) {
-                sumOfAverages += student.getStudyAverage();
-                numberOfStudents++;
-            }
-        }
-        return getAverageRound(sumOfAverages, numberOfStudents);
-    }
-
     private void checkStudentsAndMarks() {
         Exceptions.arithmetic(students.isEmpty(), "No student in the class, average calculation aborted!");
         Exceptions.arithmetic(isMarksEmpty(), "No marks present, average calculation aborted!");

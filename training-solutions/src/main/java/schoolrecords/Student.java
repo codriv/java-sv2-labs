@@ -19,6 +19,10 @@ public class Student {
         return name;
     }
 
+    public List<Mark> getMarks() {
+        return new ArrayList<>(marks);
+    }
+
     private void checkParam(String name) {
         Exceptions.argument(name.isBlank(), "Student name must not be empty!");
     }

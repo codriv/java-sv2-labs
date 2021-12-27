@@ -41,6 +41,11 @@ public class Mark {
         return String.format("%s(%d)", markType.getMarkText(), markType.getMark());
     }
 
+    public String toStringTutor() {
+        return String.format("%s(%s)", markType, tutor.getName());
+
+    }
+
     public String toStringFull() {
         return String.format("%s: %s(%d)", subject.getName(), markType.getMarkText(), markType.getMark());
     }
