@@ -13,7 +13,7 @@ public class Measurement {
         try {
             lines = Files.readAllLines(path);
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read file!");
+            throw new IllegalStateException("Can not read file!", ioe);
         }
         return lines;
     }

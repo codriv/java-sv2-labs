@@ -3,7 +3,6 @@ package exception.measurement;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -24,9 +23,10 @@ class MeasurementTest {
 
     @Test
     void readFromFileWrongPath() {
-        IllegalStateException ioe = assertThrows(IllegalStateException.class,
+        IllegalStateException ise = assertThrows(IllegalStateException.class,
                 () -> measurement.readFromFile(wrongPath));
-        assertEquals("Can not read file!", ioe.getMessage());
+        assertEquals("Can not read file!", ise.getMessage());
+        assertTrue(ise.getCause() instanceof IOException);
     }
 
     @Test
@@ -36,5 +36,4 @@ class MeasurementTest {
         assertEquals(8, wrongData.size());
         assertEquals("3,12a.4,John Doe", wrongData.get(2));
     }
-
 }
