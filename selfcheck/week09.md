@@ -1,4 +1,4 @@
-﻿# Kilencedik hét (2021-12-06 - 2021-12-12)
+# Kilencedik hét (2021-12-06 - 2021-12-12)
 
 Ezen a héten az interfészekkel és néhány haladó objektumorientált elvvel 
 fogtok megismerkedni.
