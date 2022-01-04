@@ -43,13 +43,10 @@ class BinaryStringConverterTest {
         assertEquals("Not binary string!", npe.getMessage());
     }
 
-
     @Test
     void emptyArrayTest() {
         IllegalArgumentException npe = assertThrows(IllegalArgumentException.class,
                 () -> binaryStringConverter.booleanArrayToBinaryString(new boolean[] {}));
         assertEquals("Array of booleans can not be empty!", npe.getMessage());
     }
-
-
 }
