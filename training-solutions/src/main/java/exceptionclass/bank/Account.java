@@ -36,7 +36,7 @@ public class Account {
     }
     
     public void subtract(double subtract)  {
-        if (subtract > this.maxSubtract) {
+        if (subtract > balance) {
             throw new LowBalanceBankOperationException(subtract + " is more than balance: " + balance);
         }
         if (subtract > maxSubtract) {
