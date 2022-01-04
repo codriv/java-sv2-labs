@@ -76,4 +76,18 @@ class SimpleTimeTest {
         assertEquals(NumberFormatException.class, ite.getCause().getClass());
         assertEquals("NumberFormatException", ite.getCause().getClass().getSimpleName());
     }
+
+    @Test
+    void invalidFormat8Test() {
+        InvalideTimeException ite = assertThrows(InvalideTimeException.class,
+                () -> new SimpleTime(""));
+        assertEquals("Time is null", ite.getMessage());
+    }
+
+    @Test
+    void invalidFormat9Test() {
+        InvalideTimeException ite = assertThrows(InvalideTimeException.class,
+                () -> new SimpleTime(null));
+        assertEquals("Time is null", ite.getMessage());
+    }
 }

@@ -37,7 +37,7 @@ public class SimpleTime {
     }
 
     private void validateTimeString(String timeString) {
-        if (timeString.isBlank() || timeString == null) {
+        if (timeString == null || timeString.isBlank()) {
             throw new InvalideTimeException("Time is null");
         }
         String[] parts = timeString.split(":");
