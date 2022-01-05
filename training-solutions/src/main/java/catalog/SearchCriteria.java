@@ -5,9 +5,9 @@ public final class SearchCriteria {
     private String contributor;
     private String title;
 
-    private SearchCriteria(String contributor, String title) {
-        this.contributor = contributor;
+    private SearchCriteria(String title, String contributor) {
         this.title = title;
+        this.contributor = contributor;
     }
 
     public String getContributor() {
@@ -22,15 +22,26 @@ public final class SearchCriteria {
         this.title = title;
     }
 
-    public static SearchCriteria createByBoth(String contributor, String title) {
-        return new SearchCriteria(contributor, title);
+    public static SearchCriteria createByBoth(String title, String contributor) {
+        if (Validators.isBlank(contributor) || Validators.isBlank(title)) {
+            return null;
+        }
+        return new SearchCriteria(title, contributor);
     }
 
     public static SearchCriteria createByContributor(String contributor) {
-        return new SearchCriteria(contributor, null);
+        return Validators.isBlank(contributor) ? null : new SearchCriteria(null, contributor);
     }
 
     public static SearchCriteria createByTitle(String title) {
-        return new SearchCriteria(null, title);
+        return Validators.isBlank(title) ? null : new SearchCriteria(title,null);
+    }
+
+    public boolean hasTitle() {
+        return title != null;
+    }
+
+    public boolean hasContributor() {
+        return contributor != null;
     }
 }

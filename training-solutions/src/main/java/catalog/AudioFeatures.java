@@ -11,26 +11,14 @@ public class AudioFeatures implements Feature{
     private String title;
 
     public AudioFeatures(String title, int length, List<String> performers) {
-        if (Validators.isBlank(title)) {
-            throw new IllegalStateException("Title can not be null or blank!");
-        } else {
-            this.title = title;
-        }
-        this.length = length;
-        if (Validators.isEmpty(performers)) {
-            throw new IllegalStateException("Performers can not be null or empty!");
-        } else {
-            this.performers = performers;
-        }
+        this.title = Validators.isBlank(title) ? null : title;
+        this.length = Validators.isNegative(length) ? 0 : length;
+        this.performers = Validators.isEmpty(performers) ? null : performers;
     }
 
     public AudioFeatures(String title, int length,  List<String> performers, List<String> composer) {
         this(title, length, performers);
-        if (Validators.isEmpty(composer)) {
-            throw new IllegalStateException("Composer can not be null or empty!");
-        } else {
-            this.composer = composer;
-        }
+        this.composer = Validators.isEmpty(composer) ? null : composer;
     }
 
     public int getLength() {
@@ -44,8 +32,11 @@ public class AudioFeatures implements Feature{
 
     @Override
     public List<String> getContributors() {
-        List<String> commonList = new ArrayList<>(performers);
-        commonList.addAll(composer);
+        List<String> commonList = new ArrayList<>();
+        if (composer != null) {
+            commonList.addAll(composer);
+        }
+        commonList.addAll(performers);
         return commonList;
     }
 }

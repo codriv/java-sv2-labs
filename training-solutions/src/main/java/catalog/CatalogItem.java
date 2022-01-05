@@ -1,6 +1,7 @@
 package catalog;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CatalogItem {
@@ -9,8 +10,8 @@ public class CatalogItem {
     private int price;
     private String registrationNumber;
 
-    public CatalogItem(int price, String registrationNumber, List<Feature> features) {
-        this.features = features;
+    public CatalogItem(String registrationNumber, int price, Feature... features) {
+        this.features.addAll(Arrays.asList(features));
         this.price = price;
         this.registrationNumber = registrationNumber;
     }
@@ -27,14 +28,15 @@ public class CatalogItem {
         return registrationNumber;
     }
 
-//    public int fullLengthAtOneItem() {
-//        if (hasAudioFeature()) {
-//            for (Feature feature: features) {
-//                feature.getTitle());
-//            }
-//            return titles;
-//        }
-//    }
+    public int fullLengthAtOneItem() {
+        int fullLength = 0;
+        for (Feature feature: features) {
+            if (feature instanceof AudioFeatures) {
+                fullLength += ((AudioFeatures) feature).getLength();
+            }
+        }
+        return fullLength;
+    }
 
     public List<String> getContributors() {
         List<String> contributors = new ArrayList<>();
@@ -69,6 +71,14 @@ public class CatalogItem {
             }
         }
         return false;
+    }
 
+    public int numberOfPagesAtOneItem() {
+        for (Feature feature: features) {
+            if (feature instanceof PrintedFeatures) {
+                return ((PrintedFeatures) feature).getNumberOfPages();
+            }
+        }
+        return 0;
     }
 }
