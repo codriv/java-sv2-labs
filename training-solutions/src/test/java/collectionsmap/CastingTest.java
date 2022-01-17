@@ -22,6 +22,7 @@ class CastingTest {
         applicants.put(45, "Zöld Piroska");
         applicants.put(82, "Feket Péter");
 
-        assertEquals("Zöld Piroska", casting.callNextApplicant(40, applicants));
+//        assertEquals("Zöld Piroska", casting.callNextApplicant(40, applicants));
+        assertEquals("Nagy Sándor", casting.callNextApplicant(90, applicants));
     }
 }
