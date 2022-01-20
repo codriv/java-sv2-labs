@@ -1,20 +1,29 @@
 package searching;
 
 import java.text.Collator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Book implements Comparable<Book> {
 
     private int id;
     private String author;
     private String title;
+    public static List<Integer> ids = new ArrayList<>();
 
     public Book(String author, String title) {
-        this.id = Id.getId();
+        setId();
         this.author = author;
         this.title = title;
+    }
+
+    public void setId() {
+        Random random = new Random();
+        int randomId = random.nextInt(1000);
+        while (ids.contains(randomId)) {
+            randomId = random.nextInt(1000);
+        }
+        id = randomId;
+        ids.add(randomId);
     }
 
     public int getId() {
@@ -33,10 +42,8 @@ public class Book implements Comparable<Book> {
     public int compareTo (Book o) {
         Collator collator = Collator.getInstance();
         if (author.equals(o.author)) {
-//            return title.compareTo(o.title);
             return collator.compare(title, o.title);
         } else {
-//            return author.compareTo(o.author);
             return collator.compare(author, o.author);
         }
     }
@@ -46,20 +53,11 @@ public class Book implements Comparable<Book> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id && title.equals(book.title) && author.equals(book.author);
+        return title.equals(book.title) && author.equals(book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, author);
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", author='" + author + '\'' +
-                ", title='" + title + '\'' +
-                '}' + "\n";
+        return Objects.hash(title, author);
     }
 }

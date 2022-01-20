@@ -34,12 +34,15 @@ class BookSearchTest {
         ));
 
         Book testBook = new Book("Mikszáth Kálmán", "Beszterce Ostroma");
-        System.out.println(bookSearch.findBookByAuthorTitle("Mikszáth Kálmán", "Beszterce Ostroma"));
-        System.out.println(Id.ids);
-        System.out.println(Id.ids.size());
-        List<Book> testList = new ArrayList<>(bookSearch.getBooks());
-        System.out.println(testList);
+        Book testFirstBook = new Book("Gárdonyi Géza", "A láthatazlan ember");
+        Book testLastBook = new Book("Móricz Zsigmond", "Rokonok");
+
+        List<Book> testList = bookSearch.getBooks();
         Collections.sort(testList);
-        System.out.println(testList);
+
+        assertEquals(testBook, bookSearch.findBookByAuthorTitle("Mikszáth Kálmán", "Beszterce Ostroma"));
+        assertEquals(testFirstBook, testList.get(0));
+        assertEquals(testLastBook, testList.get(testList.size() - 1));
+
     }
 }
