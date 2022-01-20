@@ -8,7 +8,7 @@ public class Book implements Comparable<Book> {
     private int id;
     private String author;
     private String title;
-    public static List<Integer> ids = new ArrayList<>();
+    private static List<Integer> ids = new ArrayList<>();
 
     public Book(String author, String title) {
         setId();
