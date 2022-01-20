@@ -26,7 +26,9 @@ public class Book implements Comparable<Book> {
         ids.add(randomId);
     }
 
-    public int getId() {
+    public int getId(HashMap<String, Integer> hm) {
+        List<Map.Entry<String, Integer> > list =new LinkedList<>(hm.entrySet());
+        Object o = new Object();
         return id;
     }
 
@@ -38,7 +40,15 @@ public class Book implements Comparable<Book> {
         return author;
     }
 
-    @Override
+//    @Override
+//    public int compareTo (Book o) {
+//        if (author.equals(o.author)) {
+//            return title.compareTo(o.title);
+//        } else {
+//            return author.compareTo(o.author);
+//        }
+//    }
+
     public int compareTo (Book o) {
         Collator collator = Collator.getInstance();
         if (author.equals(o.author)) {
@@ -59,5 +69,14 @@ public class Book implements Comparable<Book> {
     @Override
     public int hashCode() {
         return Objects.hash(title, author);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                "'}'" + "\n";
     }
 }
