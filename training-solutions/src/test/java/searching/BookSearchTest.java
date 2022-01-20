@@ -11,11 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookSearchTest {
 
     @Test
-    void teszt() {
-        System.out.println("valami");
-    }
-
-    @Test
     void findBookByAuthorTitle() {
         BookSearch bookSearch = new BookSearch(Arrays.asList(
                 new Book("Mikszáth Kálmán", "Szent Péter Esernyője"),
