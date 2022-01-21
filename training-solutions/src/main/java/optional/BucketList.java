@@ -1,14 +1,22 @@
 package optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class BucketList {
 
-    private List<Destination> destinations;
+    private List<Destination> destinations = new ArrayList<>();
+
+    public BucketList() {
+    }
 
     public BucketList(List<Destination> destinations) {
         this.destinations = destinations;
+    }
+
+    public void addDestination(Destination destination) {
+        destinations.add(destination);
     }
 
     public Optional<Destination> getDestinationWithKeyword(String keyword) {
