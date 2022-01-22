@@ -2,7 +2,6 @@ package searching;
 
 import java.text.Collator;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class LostProperty implements Comparable<LostProperty>{
 
