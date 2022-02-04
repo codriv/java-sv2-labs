@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TrackPointTest {
 
 
-
     TrackPoint trackPoint = new TrackPoint(new Coordinate(12.5, 34.89), 123);
     TrackPoint trackPoint2 = new TrackPoint(new Coordinate(12.6, 34.123), 200);
 
