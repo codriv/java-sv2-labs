@@ -1,8 +1,6 @@
 package activity;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -88,21 +86,9 @@ public class Track {
         String line = scanner.nextLine().trim();
         if (line.startsWith("<trkpt")) {
             Coordinate coordinate = getCoordinate(line);
-            double elevation = findElevation(scanner);
+            double elevation = getElevation(scanner.nextLine().trim());
             trackPoints.add(new TrackPoint(coordinate, elevation));
         }
-    }
-
-    private double findElevation(Scanner scanner) {
-        String nextLine = "";
-        while (!nextLine.startsWith("<trkpt")) {
-            if (nextLine.startsWith("<ele")) {
-                return getElevation(nextLine.trim());
-            } else if (scanner.hasNextLine()) {
-                nextLine = scanner.nextLine().trim();
-            }
-        }
-        return 0;
     }
 
     private Coordinate getCoordinate(String line) {
