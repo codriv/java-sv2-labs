@@ -20,7 +20,7 @@ public class Coordinate {
     }
 
     private void validate(double latitude, double longitude) {
-        if (-90 > latitude || latitude > 90 || -180 > longitude || longitude > 180) {
+        if (latitude < -90 || 90 < latitude || longitude < -180 || 180 < longitude) {
             throw new IllegalArgumentException("Wrong coordinates!");
         }
     }

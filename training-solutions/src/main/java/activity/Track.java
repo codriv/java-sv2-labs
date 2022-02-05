@@ -73,4 +73,37 @@ public class Track {
     private double getDifference(int i) {
         return trackPoints.get(i).getElevation() - (trackPoints.get(i - 1).getElevation());
     }
+
+    public void loadFromGpx(InputStream is) {
+        try (Scanner scanner = new Scanner(is)) {
+            while (scanner.hasNextLine()) {
+                createTrackPoint(scanner);
+            }
+        } catch(NullPointerException npe) {
+            throw new IllegalStateException("Can not read file!");
+        }
+    }
+
+    private void createTrackPoint(Scanner scanner) {
+        String line = scanner.nextLine().trim();
+        if (line.startsWith("<trkpt")) {
+            Coordinate coordinate = getCoordinate(line);
+            double elevation = 0;
+            String nextLine = scanner.nextLine().trim();
+            elevation = getElevation(nextLine);
+            trackPoints.add(new TrackPoint(coordinate, elevation));
+        }
+    }
+
+    private Coordinate getCoordinate(String line) {
+        String[] parts = line.split("\"");
+        double lat = Double.parseDouble(parts[1]);
+        double lon = Double.parseDouble(parts[3]);
+        return new Coordinate(lat, lon);
+    }
+
+    private double getElevation(String line) {
+        String[] parts = line.split("[<>]");
+        return Double.parseDouble(parts[2]);
+    }
 }
