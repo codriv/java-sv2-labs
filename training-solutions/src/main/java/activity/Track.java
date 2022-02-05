@@ -51,7 +51,7 @@ public class Track {
     public double getFullDecrease() {
         double fullDecrease = 0;
         for (int i = 1; i < trackPoints.size(); i++) {
-            double decrease = trackPoints.get(i).getElevation() - (trackPoints.get(i - 1).getElevation());
+            double decrease = getDifference(i);
             fullDecrease -= decrease < 0 ? decrease : 0;
         }
         return fullDecrease;
@@ -60,9 +60,13 @@ public class Track {
     public double getFullElevation() {
         double fullElevation = 0;
         for (int i = 1; i < trackPoints.size(); i++) {
-            double elevation = trackPoints.get(i).getElevation() - (trackPoints.get(i - 1).getElevation());
+            double elevation = getDifference(i);
             fullElevation += elevation > 0 ? elevation : 0;
         }
         return fullElevation;
+    }
+
+    private double getDifference(int i) {
+        return trackPoints.get(i).getElevation() - (trackPoints.get(i - 1).getElevation());
     }
 }
