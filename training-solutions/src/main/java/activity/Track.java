@@ -95,12 +95,11 @@ public class Track {
 
     private double findElevation(Scanner scanner) {
         String nextLine = "";
-        if (scanner.hasNextLine()) {
-            nextLine = scanner.nextLine().trim();
-        }
-        while (scanner.hasNextLine() && !nextLine.startsWith("<trkpt")) {
+        while (!nextLine.startsWith("<trkpt")) {
             if (nextLine.startsWith("<ele")) {
                 return getElevation(nextLine.trim());
+            } else if (scanner.hasNextLine()) {
+                nextLine = scanner.nextLine().trim();
             }
         }
         return 0;
