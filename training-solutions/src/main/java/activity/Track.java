@@ -88,11 +88,22 @@ public class Track {
         String line = scanner.nextLine().trim();
         if (line.startsWith("<trkpt")) {
             Coordinate coordinate = getCoordinate(line);
-            double elevation = 0;
-            String nextLine = scanner.nextLine().trim();
-            elevation = getElevation(nextLine);
+            double elevation = findElevation(scanner);
             trackPoints.add(new TrackPoint(coordinate, elevation));
         }
+    }
+
+    private double findElevation(Scanner scanner) {
+        String nextLine = "";
+        if (scanner.hasNextLine()) {
+            nextLine = scanner.nextLine().trim();
+        }
+        while (scanner.hasNextLine() && !nextLine.startsWith("<trkpt")) {
+            if (nextLine.startsWith("<ele")) {
+                return getElevation(nextLine.trim());
+            }
+        }
+        return 0;
     }
 
     private Coordinate getCoordinate(String line) {
