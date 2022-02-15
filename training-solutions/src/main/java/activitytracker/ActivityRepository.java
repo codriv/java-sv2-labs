@@ -4,6 +4,9 @@ import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.MariaDbDataSource;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityRepository {
 
@@ -43,5 +46,53 @@ public class ActivityRepository {
         } catch (SQLException sqle) {
             throw new IllegalStateException("Cannot reach database!", sqle);
         }
+    }
+
+    public Activity getActivityById(int id) {
+        try (Connection connection = (Connection) dataSource.getConnection();
+             PreparedStatement stmt = connection.prepareStatement("select * from activities where id = ?;")) {
+            stmt.setInt(1, id);
+            return getActivity(id, stmt);
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Cannot reach database!", sqle);
+        }
+    }
+
+    private Activity getActivity(int id, PreparedStatement stmt) throws SQLException {
+        try (ResultSet rs = stmt.executeQuery()){
+            if (rs.next()) {
+                return getNewActivity(rs);
+            } else {
+                throw new IllegalStateException("Activity with id: " + id + " not found!");
+            }
+        }
+    }
+
+    private Activity getNewActivity(ResultSet rs) throws SQLException {
+        int activityId = rs.getInt("id");
+        LocalDateTime startTime = rs.getTimestamp("startTime").toLocalDateTime();
+        String desc = rs.getString("activity_desc");
+        ActivityType type = ActivityType.valueOf(rs.getString("activity_type"));
+        return new Activity(activityId, startTime, desc, type);
+    }
+
+    public List<Activity> getActivies() {
+        try (Connection connection = (Connection) dataSource.getConnection();
+             Statement stmt = connection.createStatement()) {
+            ;
+            return getActivityList(stmt);
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Cannot reach database!", sqle);
+        }
+    }
+
+    private List<Activity> getActivityList(Statement stmt) throws SQLException {
+        List<Activity> activityList = new ArrayList<>();
+        try(ResultSet rs = stmt.executeQuery("select * from activities;")) {
+            while (rs.next()) {
+                activityList.add(getNewActivity(rs));
+            }
+        }
+        return activityList;
     }
 }
