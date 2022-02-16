@@ -1,33 +1,23 @@
 package activitytracker;
 
 import org.mariadb.jdbc.Connection;
-import org.mariadb.jdbc.MariaDbDataSource;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityRepository {
+public class ActivityDao {
 
-    private MariaDbDataSource dataSource;
+    private DataSource dataSource;
 
-    public ActivityRepository(MariaDbDataSource dataSource) {
+    public ActivityDao(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public void connect(String host, int port, String database, String user, String password) {
-        try {
-            dataSource.setUrl(String.format("jdbc:mariadb://%s:%d/%s?useUnicode=true", host, port, database));
-            dataSource.setUser(user);
-            dataSource.setPassword(password);
-        } catch (SQLException sqle) {
-            throw new IllegalStateException("Cannot reach database!", sqle);
-        }
-    }
-
     public void creteTable() {
-        try (Connection connection = (Connection) dataSource.getConnection();
+        try (org.mariadb.jdbc.Connection connection = (org.mariadb.jdbc.Connection) dataSource.getConnection();
              Statement stmt = connection.createStatement()) {
             stmt.execute("create table activities (`id` int auto_increment, `startTime` datetime," +
                     "`activity_desc` varchar(255),`activity_type` varchar(20), constraint id_auto primary key (id))");
@@ -36,19 +26,19 @@ public class ActivityRepository {
         }
     }
 
-    public void insert(Activity activity) {
-        try (Connection connection = (Connection) dataSource.getConnection();
+    public void saveActivity(Activity activity) {
+        try (org.mariadb.jdbc.Connection connection = (Connection) dataSource.getConnection();
              PreparedStatement stmt = connection.prepareStatement("insert into activities (startTime, activity_desc, activity_type) values (?, ?, ?)")) {
             stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.execute();
         } catch (SQLException sqle) {
-            throw new IllegalStateException("Cannot reach database!", sqle);
+            throw new IllegalStateException("Cannot insert activity: " + activity.getDesc());
         }
     }
 
-    public Activity getActivityById(int id) {
+    public Activity findActivityById(int id) {
         try (Connection connection = (Connection) dataSource.getConnection();
              PreparedStatement stmt = connection.prepareStatement("select * from activities where id = ?;")) {
             stmt.setInt(1, id);
@@ -76,7 +66,8 @@ public class ActivityRepository {
         return new Activity(activityId, startTime, desc, type);
     }
 
-    public List<Activity> getActivies() {
+
+    public List<Activity> listActivities() {
         try (Connection connection = (Connection) dataSource.getConnection();
              Statement stmt = connection.createStatement()) {
             return getActivityList(stmt);
