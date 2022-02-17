@@ -10,11 +10,15 @@ public class Activity {
     private String desc;
     private ActivityType type;
 
-    public Activity(int id, LocalDateTime startTime, String desc, ActivityType type) {
-        this.id = id;
+    public Activity(LocalDateTime startTime, String desc, ActivityType type) {
         this.startTime = startTime;
         this.desc = desc;
         this.type = type;
+    }
+
+    public Activity(int id, LocalDateTime startTime, String desc, ActivityType type) {
+        this(startTime, desc, type);
+        this.id = id;
     }
 
     public int getId() {

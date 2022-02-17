@@ -40,6 +40,13 @@ class ActivityDaoTest {
     }
 
     @Test
+    void saveActivityReturn() {
+        activityDao.saveActivity(activity1);
+        activityDao.saveActivity(activity2);
+        assertEquals(3, activityDao.saveActivity(activity3).getId());
+    }
+
+    @Test
     void findActivityById() {
         activityDao.saveActivity(activity1);
         activityDao.saveActivity(activity2);

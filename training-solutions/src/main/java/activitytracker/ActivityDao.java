@@ -26,15 +26,28 @@ public class ActivityDao {
         }
     }
 
-    public void saveActivity(Activity activity) {
+    public Activity saveActivity(Activity activity) {
         try (org.mariadb.jdbc.Connection connection = (Connection) dataSource.getConnection();
-             PreparedStatement stmt = connection.prepareStatement("insert into activities (startTime, activity_desc, activity_type) values (?, ?, ?)")) {
+             PreparedStatement stmt = connection.prepareStatement("insert into activities (startTime, activity_desc, activity_type) values (?, ?, ?)",
+                     PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.execute();
+            return getActivityWithGeneratedId(stmt);
         } catch (SQLException sqle) {
             throw new IllegalStateException("Cannot insert activity: " + activity.getDesc());
+        }
+    }
+
+    private Activity getActivityWithGeneratedId(PreparedStatement stmt) throws SQLException {
+        try (ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                return findActivityById(id);
+            } else {
+                throw new SQLException("No key has generated");
+            }
         }
     }
 
