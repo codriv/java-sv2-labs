@@ -1,0 +1,7 @@
+CREATE TABLE `track_point` (
+	`id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+	`time` DATE NULL DEFAULT NULL,
+	`lat` DOUBLE(255) NULL DEFAULT NULL COLLATE 'utf8mb3_hungarian_ci',
+	`lon` DOUBLE(20) NULL DEFAULT NULL COLLATE 'utf8mb3_hungarian_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
